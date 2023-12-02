@@ -1,6 +1,10 @@
 import sys
 
 def WordListFile(file_path):
+    """
+    Get : file path
+    Return : list of thw words in file
+    """
     try:
         with open(file_path, 'r') as file:
             data = file.read()
@@ -11,6 +15,10 @@ def WordListFile(file_path):
         print("Only integers are allowed")
 
 def ListToCntDict(words):
+    """
+    Get : words list
+    Return : dictionary that count shows of each word in the list
+    """
     dict_words = {}
     for word in words:
         if word in dict_words:
@@ -20,9 +28,17 @@ def ListToCntDict(words):
     return dict_words
 
 def SortedByFrequent(dict_cnt):
+    """
+    Get : dictionary of the words and their count shows
+    Return : list that sorted by the highest count to lower count
+    """
     return list(sorted(dict_cnt, key=lambda x: dict_cnt[x], reverse=True))
 
 def PrintHighFreqWords(list_sorted):
+    """
+    Get : list sorted by the highest count to lower count
+    Do : prints up to term N the words with the highest frequency
+    """
     global dict_cnt
     try:
         for x in range(int(sys.argv[1])):
@@ -33,6 +49,7 @@ def PrintHighFreqWords(list_sorted):
         print("Only integers are allowed")
 
 if __name__ == '__main__':
+    # Input file path
     file_path = input("Enter the file path : ")
     words_list = WordListFile(file_path)
     dict_cnt = ListToCntDict(words_list)
